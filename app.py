@@ -32,7 +32,7 @@ model = load_model(MODEL_PATH,
                             'f1-score': sm.metrics.f1_score,
                             'dice_loss': sm.losses.DiceLoss()})
 model.load_weights(MODEL_PATH)
-model.make_predict_function()          # Necessary
+#model.make_predict_function()          # Necessary
 
 # function for preparing the input image before prediction
 def prepare_image(image):
