@@ -23,16 +23,10 @@ app = Flask(__name__)
 #model = None
 IMAGE_PATH_IN = 'static/input/'
 IMAGE_PATH_OUT = 'static/output/'
-MODEL_PATH = "model/Base-Dice.keras"
+MODEL_PATH = "model/efficientNet_Dice.h5"
 
-#model = sm.FPN('resnet152', classes=8, activation='softmax', encoder_weights='imagenet')
-model = load_model(MODEL_PATH,
-                    custom_objects={
-                            'iou_score': sm.metrics.iou_score,
-                            'f1-score': sm.metrics.f1_score,
-                            'dice_loss': sm.losses.DiceLoss()})
+model = sm.Unet('efficientnetb0', classes=8, activation='softmax', encoder_weights='imagenet')
 model.load_weights(MODEL_PATH)
-#model.make_predict_function()          # Necessary
 
 # function for preparing the input image before prediction
 def prepare_image(image):
