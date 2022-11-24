@@ -23,7 +23,7 @@ app = Flask(__name__)
 #model = None
 IMAGE_PATH_IN = 'static/input/'
 IMAGE_PATH_OUT = 'static/output/'
-MODEL_PATH = "model/Base-Dice-mini.keras"
+MODEL_PATH = "model/Base-Dice-petit.keras"
 
 model = load_model(MODEL_PATH,
                     custom_objects={
