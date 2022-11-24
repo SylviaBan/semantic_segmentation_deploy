@@ -23,15 +23,14 @@ app = Flask(__name__)
 #model = None
 IMAGE_PATH_IN = 'static/input/'
 IMAGE_PATH_OUT = 'static/output/'
-MODEL_PATH = "model/Base-Jaccard.keras"
+MODEL_PATH = "model/Base-Dice-petit.keras"
 
 model = load_model(MODEL_PATH,
                     custom_objects={
                             'iou_score': sm.metrics.iou_score,
                             'f1-score': sm.metrics.f1_score,
-                            'binary_crossentropy_plus_jaccard_loss': sm.losses.bce_jaccard_loss})
+                            'dice_loss': sm.losses.DiceLoss()})
 model.load_weights(MODEL_PATH)
-model.make_predict_function()          # Necessary
 
 # function for preparing the input image before prediction
 def prepare_image(image):
